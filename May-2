@@ -1,0 +1,26 @@
+class Solution{
+public:
+void dfs(int v,int p,vector<int>&dist,vector<vector<int>>&adj){
+    
+    for(auto to:adj[v]){
+        if(to==p)continue;
+        dist[to]=dist[v]+1;
+        dfs(to,v,dist,adj);
+    }
+}
+    int partyHouse(int N, vector<vector<int>> &adj){
+        int mn=1e9+7;
+        
+    for(int i=1;i<=N;i++){
+        vector<int>dist(N+1);
+        
+        dfs(i,0,dist,adj);
+        int mx=0;
+        for(int i=1;i<=N;i++){
+            mx=max(mx,dist[i]);
+        }
+        mn=min(mn,mx);
+    }
+    return mn;
+    }
+};
