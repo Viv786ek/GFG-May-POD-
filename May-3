@@ -1,0 +1,18 @@
+class Solution{
+public:
+    int subsetXOR(vector<int> arr, int N, int K) {
+        // code here
+         vector<vector<int>> dp(N, vector<int>(128, 0));
+        dp[0][0] = dp[0][arr[0]] = 1;
+        
+        for(int i = 1; i < N; i++) {
+            dp[i] = dp[i - 1];
+            for(int j = 0; j < 128; j++) {
+                int cur = j ^ arr[i];
+                dp[i][cur] += dp[i - 1][j];
+            }
+        }
+        
+        return dp[N - 1][K];
+    }
+};
