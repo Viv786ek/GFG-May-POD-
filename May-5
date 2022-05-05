@@ -1,0 +1,15 @@
+string stringPartition(string S, int a, int b){ 
+        int n = S.length();
+        for(int i=1;i<n;i++)
+        {
+            if(stoi(S.substr(0,i))%a==0
+            &&stoi(S.substr(i,(n-i)))%b==0)
+            {
+                string ans=S.substr(0,i);
+                ans+=" ";
+                ans+=S.substr(i,(n-i));
+                return ans;
+            }
+        }
+        return "-1";
+    }
