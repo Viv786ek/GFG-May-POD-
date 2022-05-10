@@ -1,0 +1,17 @@
+class Solution {
+public:
+    
+    vector<int>ans;
+    void getMid(vector<int>& arr,int start,int end){
+        if(start > end) return;
+        int mid = (start+end)/2;
+        ans.push_back(arr[mid]);
+        getMid(arr,start,mid-1);
+        getMid(arr,mid+1,end);
+    }
+    vector<int> sortedArrayToBST(vector<int>& nums) {
+        // Code here
+        getMid(nums,0,nums.size()-1);
+        return ans;
+    }
+};
