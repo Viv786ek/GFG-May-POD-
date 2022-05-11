@@ -1,0 +1,25 @@
+class Solution
+{
+    public:
+    //Function to return the largest possible number of n digits
+    //with sum equal to given sum.
+    string largestNumber(int n, int sum)
+    {
+        // Your code here
+        if(9*n<sum) return "-1";
+        string s="";
+        while(--n){
+            if(sum>=9){
+                s += "9";
+                sum -= 9;
+            }else if(sum>0){
+                s += "sum";
+                sum =0;
+            }
+            else{
+                s +="0";
+            }
+        }
+        return s;
+    }
+};
