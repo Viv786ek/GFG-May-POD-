@@ -1,0 +1,29 @@
+ bool is_Possible(vector<vector<int>>& grid, int srcRow, int srcCol, vector<vector<bool>>& visited) 
+    {
+        // Invalid Path
+        if (srcRow < 0 || srcRow >= grid.size() || srcCol < 0 || srcCol >= grid[0].size())
+            return false;
+            
+        if (visited[srcRow][srcCol])
+            return false;
+        
+        if (grid[srcRow][srcCol] == 0)
+            return false;
+            
+        visited[srcRow][srcCol] = true;
+        if (grid[srcRow][srcCol] == 2)
+            return true;
+            
+        if (is_Possible(grid, srcRow, srcCol-1, visited))
+            return true;
+
+        if (is_Possible(grid, srcRow, srcCol+1, visited))
+            return true;
+
+        if (is_Possible(grid, srcRow+1, srcCol, visited))
+            return true;
+
+        if (is_Possible(grid, srcRow-1, srcCol, visited))
+            return true;
+        return false;
+    }
