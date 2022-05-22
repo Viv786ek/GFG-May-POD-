@@ -1,0 +1,18 @@
+string findAndReplace(string S ,int Q, int index[], string sources[], string targets[]) {
+        // code here
+        string ans="";
+        int i=0,j=0;
+        while(i<S.size()){
+            if(i==index[j]){
+                if(S.substr(i,sources[j].size())==sources[j]){
+                ans+=targets[j];
+                i+= sources[j].size();
+                }
+                j++;
+            }else{
+                ans+=S[i];
+                i++;
+            }
+        }
+        return ans;
+    }
