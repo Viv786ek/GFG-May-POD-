@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    vector<int> numAndDen(int n, int d) {
+        // code here
+        int num=-1,dem=1;
+        for(int y=d+1;y<=10000;y++){
+            int x=(n*y)/d;
+            if(__gcd(x,y)==1){
+                if(1.0 * x/y > 1.0 * num / dem)
+                    num=x,dem=y;
+            }
+        }
+        return {num,dem};
+    }
+};
