@@ -1,0 +1,7 @@
+int shortestPath( int x, int y){ 
+       if(x==y) return 0;
+       
+       int maxi = max(x,y);
+       int mini = min(x,y);
+       return 1+shortestPath(maxi/2,mini);
+   }
